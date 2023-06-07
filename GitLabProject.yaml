@@ -1,0 +1,10 @@
+apiVersion: projects.gitlab.crossplane.io/v1alpha1
+kind: Project
+metadata:
+  name: crossplane-example-project
+spec:
+  forProvider:
+    description: example project description
+    name: ExampleProject
+  providerConfigRef:
+    name: gitlab-provider

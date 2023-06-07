@@ -1,0 +1,12 @@
+apiVersion: gitlab.crossplane.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: gitlab-provider
+spec:
+  baseURL: https://git.scc.kit.edu/
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: gitlab-credentials #contains the accesstoken to gitlab
+      key: token

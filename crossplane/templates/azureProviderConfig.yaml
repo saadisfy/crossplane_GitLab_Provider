@@ -1,0 +1,13 @@
+{{- if .Values.azureProviderConfig.enabled}}
+apiVersion: azure.upbound.io/v1beta1
+metadata:
+  name: default
+kind: ProviderConfig
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: {{ .Values.azureProviderConfig.secretRef.namespace}}
+      name: {{ .Values.azureProviderConfig.secretRef.name}}
+      key: {{ .Values.azureProviderConfig.secretRef.key}}
+{{- end}}

@@ -1,0 +1,6 @@
+
+.DS_Store
+
+crossplane/charts/
+
+azure-credentials.json

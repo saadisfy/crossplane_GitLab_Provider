@@ -1,0 +1,31 @@
+# Default values for crossplane.
+# This is a YAML-formatted file.
+
+
+nameOverride: ""
+fullnameOverride: ""
+
+crossplane:
+  enabled: true
+  metrikucs:
+    # -- Expose Crossplane and RBAC Manager metrics endpoint.
+    enabled: false
+
+azureProvider:
+  enabled: true
+  package: xpkg.upbound.io/crossplane-contrib/provider-gitlab:v0.3.0
+
+azureProviderAAD:
+  enabled: true
+  package: xpkg.upbound.io/upbound/provider-azuread:v0.8.0
+
+azureProviderConfig:
+  enabled: true
+  secretRef:
+      namespace: crossplane-system
+      name: azure-secret
+      key: creds
+
+
+
+

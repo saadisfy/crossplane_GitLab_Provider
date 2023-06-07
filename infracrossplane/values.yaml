@@ -1,5 +1,10 @@
-# Default values for crossplane.
-# This is a YAML-formatted file.
+# Default values for:
+  # crossplane
+  # azureProvider
+  # azureActiveDirectoryProvider
+  # Kuberentes Secret (without data)
+  # azureProviderConfig (which used for both Providers)
+
 
 
 nameOverride: ""
@@ -13,18 +18,39 @@ crossplane:
 
 azureProvider:
   enabled: true
-  package: xpkg.upbound.io/crossplane-contrib/provider-gitlab:v0.3.0
+  package:
+    path: xpkg.upbound.io/upbound/provider-azure #:v0.3.0
+    version: v0.32.0
+
 
 azureProviderAAD:
-  enabled: true
-  package: xpkg.upbound.io/upbound/provider-azuread:v0.8.0
+  enabled: false
+  package:
+    path:  xpkg.upbound.io/upbound/provider-azuread
+    version: v0.8.0
 
+
+
+
+#TODO: how to ensure that secret is created
 azureProviderConfig:
   enabled: true
-  secretRef:
-      namespace: crossplane-system
-      name: azure-secret
-      key: creds
+  secret:
+    enable: false
+    data: $AZURE_PROVIDER_CONFIG_SECRET # created with: 'az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<Subscription ID>'
+    namespace: infracross #TODO should that be even forced?
+    name: azure-secret
+    key: creds # needed for SecretRef in azureProviderConfig
+
+
+resourceGroup:
+  enabled: false
+  name: example-rg
+  location: Germany West Central
+  providerConfig:
+    name: default
+
+
 
 
 

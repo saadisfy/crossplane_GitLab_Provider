@@ -1,0 +1,10 @@
+{{- if .Values.resourceGroup.enabled -}}
+apiVersion: azure.upbound.io/v1beta1
+kind: ResourceGroup
+metadata:
+  name: {{ .Values.resourceGroup.name }}
+spec:
+  forProvider:
+    location: {{.Values.resourceGroup.location }}
+  providerConfigRef: {{- .Values.resourceGroup.providerConfig | toYaml | nindent 6 -}}
+{{- end -}}

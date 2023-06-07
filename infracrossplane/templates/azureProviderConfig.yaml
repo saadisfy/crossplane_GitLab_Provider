@@ -1,4 +1,5 @@
-{{- if .Values.azureProviderConfig.enabled}}
+{{- if .Values.azureProviderConfig.enabled -}}
+{{ $azureProvicerConfigSecret := .Values.azureProviderConfig.secret}}
 apiVersion: azure.upbound.io/v1beta1
 metadata:
   name: default
@@ -6,5 +7,8 @@ kind: ProviderConfig
 spec:
   credentials:
     source: Secret
-    secretRef: {{- .Values.azureProviderConfig.secretRef | toYaml | nindent 6 -}}
-{{- end}}
+    secretRef:
+      name: {{ $azureProvicerConfigSecret.name}}
+      namespace: {{ $azureProvicerConfigSecret.namespace}}
+      key: {{ $azureProvicerConfigSecret.key}}
+{{- end -}}

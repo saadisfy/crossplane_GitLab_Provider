@@ -1,5 +1,5 @@
 apiVersion: v2
-name: crossplane
+name: infracrossplane
 description: This chart installs crossplane and makes configurtion to connect and manipulate resources of Azure.
 
 # A chart can be either an 'application' or a 'library' chart.

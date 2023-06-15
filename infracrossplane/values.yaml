@@ -24,7 +24,7 @@ azureProvider:
 
 
 azureProviderAAD:
-  enabled: false
+  enabled: true
   package:
     path:  xpkg.upbound.io/upbound/provider-azuread
     version: v0.8.0
@@ -38,14 +38,14 @@ azureProviderConfig:
   secret:
     enable: false
     data: $AZURE_PROVIDER_CONFIG_SECRET # created with: 'az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<Subscription ID>'
-    namespace: argocd #TODO should that be even forced?
+    namespace: crossplane-system #TODO should that be even forced?
     name: azure-secret
     key: creds # needed for SecretRef in azureProviderConfig
 
 
 resourceGroup:
-  enabled: false
-  name: example-rg
+  enabled: true
+  name: example-rg-try2
   location: Germany West Central
   providerConfig:
     name: default

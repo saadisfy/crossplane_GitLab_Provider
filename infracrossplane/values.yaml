@@ -11,20 +11,20 @@ nameOverride: ""
 fullnameOverride: ""
 
 crossplane:
-  enabled: true
+  enabled: false
   metrikucs:
     # -- Expose Crossplane and RBAC Manager metrics endpoint.
     enabled: false
 
 azureProvider:
-  enabled: true
+  enabled: false
   package:
     path: xpkg.upbound.io/upbound/provider-azure #:v0.3.0
     version: v0.32.0
 
 
 azureProviderAAD:
-  enabled: true
+  enabled: false
   package:
     path:  xpkg.upbound.io/upbound/provider-azuread
     version: v0.8.0
@@ -34,7 +34,7 @@ azureProviderAAD:
 
 #TODO: how to ensure that secret is created
 azureProviderConfig:
-  enabled: true
+  enabled: false
   secret:
     enable: false
     data: $AZURE_PROVIDER_CONFIG_SECRET # created with: 'az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<Subscription ID>'
@@ -44,7 +44,7 @@ azureProviderConfig:
 
 
 resourceGroup:
-  enabled: true
+  enabled: false
   name: example-rg-try2
   location: Germany West Central
   providerConfig:

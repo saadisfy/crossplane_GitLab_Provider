@@ -5,4 +5,7 @@ metadata:
   name: provider-azuread
 spec:
   package: "{{ template "azureADProvider" . }}"
+  dependsOn:
+    - provider: {{ .Values.azureProvider.package.path}}
+      version:  {{ .Values.azureProvider.package.version}}
 {{- end}}

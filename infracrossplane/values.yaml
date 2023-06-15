@@ -24,7 +24,7 @@ azureProvider:
 
 
 azureProviderAAD:
-  enabled: false
+  enabled: true
   package:
     path:  xpkg.upbound.io/upbound/provider-azuread
     version: v0.8.0

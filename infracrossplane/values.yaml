@@ -38,7 +38,7 @@ azureProviderConfig:
   secret:
     enable: false
     data: $AZURE_PROVIDER_CONFIG_SECRET # created with: 'az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<Subscription ID>'
-    namespace: infracross #TODO should that be even forced?
+    namespace: argocd #TODO should that be even forced?
     name: azure-secret
     key: creds # needed for SecretRef in azureProviderConfig
 

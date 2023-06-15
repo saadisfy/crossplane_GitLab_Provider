@@ -44,7 +44,7 @@ azureProviderConfig:
 
 
 resourceGroup:
-  enabled: false
+  enabled: true
   name: example-rg-try2
   location: Germany West Central
   providerConfig:

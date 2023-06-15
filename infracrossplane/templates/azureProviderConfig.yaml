@@ -11,7 +11,7 @@ spec:
       name: {{ $azureProvicerConfigSecret.name}}
       namespace: {{ $azureProvicerConfigSecret.namespace}}
       key: {{ $azureProvicerConfigSecret.key}}
-  # dependsOn:
-  #   - provider: {{ .Values.azureProvider.package.path}}
-  #     version:  {{ .Values.azureProvider.package.version}}
+  dependsOn:
+    - provider: {{ .Values.azureProvider.package.path}}
+      version:  {{ .Values.azureProvider.package.version}}
 {{- end -}}

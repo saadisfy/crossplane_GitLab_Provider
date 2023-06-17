@@ -1,50 +1,5 @@
 {{- if .Values.composition.enabled }}
-# apiVersion: apiextensions.crossplane.io/v1
-# kind: CompositeResourceDefinition
-# metadata:
-#   name: providerandconfigs.azureproviderwithconfig.example.org
-# spec:
-#   group: azureproviderwithconfig.example.org # apiversion for kind: composition and the claim ProviderAndConfig
-#   names:
-#     kind: ProviderAndConfig
-#     plural: providerandconfigs
-#   # claimNames:
-#   #   kind: ProviderAndConfig
-#   #   plural: providerandconfigs
-#   versions:
-#   - name: v1
-#     served: true
-#     referenceable: true
-#     schema:
-#       openAPIV3Schema:
-#         type: object
-#         properties:
-#           spec:
-#             type: object
-#             properties:
-#               parameters:
-#                 type: object
-#                 properties:
-#                   storageGB:
-#                     type: integer
-#                 required:
-#                 - storageGB
-#             required:
-#             - parameters
-# ---
-apiVersion: pkg.crossplane.io/v1
-kind: Configuration
-metadata:
-  name: azure-configuration
-  annotations:
-    provider: azure
-spec:
-  crossplane:
-    version: ">=v1.0.0"
-  package: registry.upbound.io/crossplane/provider-azure:v0.32.0
----
-
-# xrd with claim name
+# xrd for provider and config
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:

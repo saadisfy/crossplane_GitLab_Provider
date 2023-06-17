@@ -2,9 +2,9 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: azure-composdef
+  name: providerandconfigs.azureproviderwithconfig.example.org
 spec:
-  group: azureproviderwithconfig
+  group: azureproviderwithconfig.example.org
   names:
     kind: ProviderAndConfig
     plural: providerandconfigs

@@ -1,0 +1,20 @@
+apiVersion: compose.crossplane.io/v1alpha2
+kind: Composition
+metadata:
+  name: azure-provider-with-config
+spec:
+  resources:
+    - name: provider-azure
+      kind: Provider
+      version: v0.32.0
+      spec:
+        package: "xpkg.upbound.io/upbound/provider-azure:v0.32.0"
+    - name: azure-provider-config
+      kind: ProviderConfig
+      spec:
+        credentials:
+          source: Secret
+          secretRef:
+            name: azure-secret
+            namespace: crossplane-system
+            key: creds

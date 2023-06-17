@@ -17,7 +17,7 @@ crossplane:
     enabled: false
 
 azureProvider:
-  enabled: true
+  enabled: false
   package:
     path: xpkg.upbound.io/upbound/provider-azure #:v0.3.0
     version: v0.32.0
@@ -34,7 +34,7 @@ azureProviderAAD:
 
 #TODO: how to ensure that secret is created
 azureProviderConfig:
-  enabled: true
+  enabled: false
   secret:
     enable: false
     data: $AZURE_PROVIDER_CONFIG_SECRET # created with: 'az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<Subscription ID>'

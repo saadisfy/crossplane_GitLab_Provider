@@ -32,7 +32,41 @@ spec:
             required:
             - parameters
 ---
-# following is a claim for the XRD ProviderAndConfig
+# xrd with claim name
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: xproviderandconfigs.azureproviderwithconfig.example.org
+spec:
+  group: azureproviderwithconfig.example.org # apiversion for kind: composition and the claim ProviderAndConfig
+  names:
+    kind: xProviderAndConfig
+    plural: xproviderandconfigs
+  claimNames:
+    kind: ProviderAndConfig
+    plural: providerandconfigs
+  versions:
+  - name: v1
+    served: true
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              parameters:
+                type: object
+                properties:
+                  storageGB:
+                    type: integer
+                required:
+                - storageGB
+            required:
+            - parameters
+---
+# following is a claim for the XRD ProviderAndConfig, hopefully it will create the XR
 apiVersion: azureproviderwithconfig.example.org/v1
 kind: ProviderAndConfig
 metadata:
@@ -59,7 +93,7 @@ spec:
   writeConnectionSecretToRef:
     name: my-db-connection-details
 ---
-
+# composite, acts as a class of the XR, used to give info about the resource the XR should have
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:

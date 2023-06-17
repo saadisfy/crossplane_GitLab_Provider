@@ -3,10 +3,6 @@
 apiVersion: azure.upbound.io/v1beta1
 metadata:
   name: default
-  dependsOn:
-    - apiGroup: pkg.crossplane.io/v1
-      kind: Provider
-      name: upbound-provider-azure
 kind: ProviderConfig
 spec:
   credentials:

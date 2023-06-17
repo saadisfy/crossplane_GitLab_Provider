@@ -59,22 +59,22 @@ spec:
     name: my-db-connection-details
 ---
 
-# apiVersion: apiextensions.crossplane.io/v1
-# kind: Composition
-# metadata:
-#   name: azure-composition
-# spec:
-#   compositeTypeRef:
-#     apiVersion: compose.crossplane.io/v1
-#     kind: Composition
-#   resources:
-#     - name: provider-azure
-#       version: v0.32.0
-#       kind: Provider
-#     - name: azure-provider-config
-#       kind: ProviderConfig
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: azure-composition
+spec:
+  compositeTypeRef:
+    apiVersion: azureproviderwithconfig.example.org
+    kind: XProviderAndConfig
+  resources:
+    - name: provider-azure
+      version: v0.32.0
+      kind: Provider
+    - name: azure-provider-config
+      kind: ProviderConfig
 
-# ---
+---
 # apiVersion: compose.crossplane.io/v1
 # kind: CompositionClaim
 # metadata:

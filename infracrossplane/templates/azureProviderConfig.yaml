@@ -1,6 +1,6 @@
 {{- if .Values.azureProviderConfig.enabled -}}
 {{ $azureProvicerConfigSecret := .Values.azureProviderConfig.secret}}
-apiVersion: azure.upbound.io/v1beta1
+apiVersion: azure.crossplane.io/v1beta1
 metadata:
   name: default
   dependsOn:
@@ -10,6 +10,9 @@ metadata:
     - apiGroup: apiextensions.k8s.io
       kind: CustomResourceDefinition
       name: configurations.pkg.crossplane.io
+    - apiGroup: azure.crossplane.io
+      kind: CustomResourceDefinition
+      name:
 kind: ProviderConfig
 spec:
   credentials:

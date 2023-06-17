@@ -1,37 +1,51 @@
 {{- if .Values.composition.enabled }}
-apiVersion: apiextensions.crossplane.io/v1
-kind: CompositeResourceDefinition
+# apiVersion: apiextensions.crossplane.io/v1
+# kind: CompositeResourceDefinition
+# metadata:
+#   name: providerandconfigs.azureproviderwithconfig.example.org
+# spec:
+#   group: azureproviderwithconfig.example.org # apiversion for kind: composition and the claim ProviderAndConfig
+#   names:
+#     kind: ProviderAndConfig
+#     plural: providerandconfigs
+#   # claimNames:
+#   #   kind: ProviderAndConfig
+#   #   plural: providerandconfigs
+#   versions:
+#   - name: v1
+#     served: true
+#     referenceable: true
+#     schema:
+#       openAPIV3Schema:
+#         type: object
+#         properties:
+#           spec:
+#             type: object
+#             properties:
+#               parameters:
+#                 type: object
+#                 properties:
+#                   storageGB:
+#                     type: integer
+#                 required:
+#                 - storageGB
+#             required:
+#             - parameters
+# ---
+apiVersion: meta.pkg.crossplane.io/v1
+kind: Configuration
 metadata:
-  name: providerandconfigs.azureproviderwithconfig.example.org
+  name: azure-configuration
+  annotations:
+    provider: azure
 spec:
-  group: azureproviderwithconfig.example.org # apiversion for kind: composition and the claim ProviderAndConfig
-  names:
-    kind: ProviderAndConfig
-    plural: providerandconfigs
-  # claimNames:
-  #   kind: ProviderAndConfig
-  #   plural: providerandconfigs
-  versions:
-  - name: v1
-    served: true
-    referenceable: true
-    schema:
-      openAPIV3Schema:
-        type: object
-        properties:
-          spec:
-            type: object
-            properties:
-              parameters:
-                type: object
-                properties:
-                  storageGB:
-                    type: integer
-                required:
-                - storageGB
-            required:
-            - parameters
+  crossplane:
+    version: ">=v1.0.0"
+  dependsOn:
+    - provider: registry.upbound.io/crossplane/provider-azure
+      version: ">=v0.32.0"
 ---
+
 # xrd with claim name
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
@@ -66,48 +80,48 @@ spec:
             required:
             - parameters
 ---
-# following is a claim for the XRD ProviderAndConfig, hopefully it will create the XR
-apiVersion: azureproviderwithconfig.example.org/v1
-kind: ProviderAndConfig
-metadata:
-  # Claims are namespaced, unlike XRs.
-  namespace: crossplane-system
-  name: my-composite
-  annotations:
-    # The external name annotation has special meaning in Crossplane. When a
-    # claim creates an XR its external name will automatically be propagated to
-    # the XR. Whether and how the external name is propagated to the resources
-    # the XR composes is up to its Composition.
-    crossplane.io/external-name: my-composite-externamename
-spec:
-  # resources:
-  #   - name: provider-azure
-  #     version: v0.32.0
-  #     kind: Provider
-  #   - name: azure-provider-config
-  #     kind: ProviderConfig
-  parameters:
-    storageGB: 20
-  compositionRef:
-    name: production
-  writeConnectionSecretToRef:
-    name: my-db-connection-details
----
-# composite, acts as a class of the XR, used to give info about the resource the XR should have
-apiVersion: apiextensions.crossplane.io/v1
-kind: Composition
-metadata:
-  name: azure-composition
-spec:
-  compositeTypeRef:
-    apiVersion: azureproviderwithconfig.example.org
-    kind: XProviderAndConfig
-  resources:
-    - name: provider-azure
-      version: v0.32.0
-      kind: Provider
-    - name: azure-provider-config
-      kind: ProviderConfig
+# # following is a claim for the XRD ProviderAndConfig, hopefully it will create the XR
+# apiVersion: azureproviderwithconfig.example.org/v1
+# kind: ProviderAndConfig
+# metadata:
+#   # Claims are namespaced, unlike XRs.
+#   namespace: crossplane-system
+#   name: my-composite
+#   annotations:
+#     # The external name annotation has special meaning in Crossplane. When a
+#     # claim creates an XR its external name will automatically be propagated to
+#     # the XR. Whether and how the external name is propagated to the resources
+#     # the XR composes is up to its Composition.
+#     crossplane.io/external-name: my-composite-externamename
+# spec:
+#   # resources:
+#   #   - name: provider-azure
+#   #     version: v0.32.0
+#   #     kind: Provider
+#   #   - name: azure-provider-config
+#   #     kind: ProviderConfig
+#   parameters:
+#     storageGB: 20
+#   compositionRef:
+#     name: production
+#   writeConnectionSecretToRef:
+#     name: my-db-connection-details
+# ---
+# # composite, acts as a class of the XR, used to give info about the resource the XR should have
+# apiVersion: apiextensions.crossplane.io/v1
+# kind: Composition
+# metadata:
+#   name: azure-composition
+# spec:
+#   compositeTypeRef:
+#     apiVersion: azureproviderwithconfig.example.org
+#     kind: XProviderAndConfig
+#   resources:
+#     - name: provider-azure
+#       version: v0.32.0
+#       kind: Provider
+#     - name: azure-provider-config
+#       kind: ProviderConfig
 
 # ---
 # apiVersion: apiextensions.crossplane.io

@@ -4,10 +4,10 @@ apiVersion: azure.upbound.io/v1beta1
 metadata:
   name: default
   dependsOn:
-    - apiGroup: apiextensions.k8s.io
+    - apiGroup: azure.crossplane.io
       kind: CustomResourceDefinition
-      name: azure.crossplane.io
-kind: ProvicerConfig
+      name: ProviderConfig
+kind: ProviderConfig
 spec:
   credentials:
     source: Secret

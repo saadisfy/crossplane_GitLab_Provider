@@ -1,6 +1,6 @@
 {{- if .Values.azureProviderConfig.enabled -}}
 {{ $azureProvicerConfigSecret := .Values.azureProviderConfig.secret}}
-apiVersion: azure.crossplane.io/v1beta1
+apiVersion: configuration.crossplane.io/v1
 metadata:
   name: default
   dependsOn:

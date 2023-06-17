@@ -15,20 +15,20 @@ composition:
   enabled: false
 
 crossplane:
-  enabled: true
+  enabled: false
   metrikucs:
     # -- Expose Crossplane and RBAC Manager metrics endpoint.
     enabled: false
 
 azureProvider:
-  enabled: true
+  enabled: false
   package:
     path: xpkg.upbound.io/upbound/provider-azure #:v0.3.0
     version: v0.32.0
 
 
 azureProviderAAD:
-  enabled: true
+  enabled: false
   package:
     path:  xpkg.upbound.io/upbound/provider-azuread
     version: v0.8.0

@@ -5,7 +5,7 @@ metadata:
   name: azure-composition
 spec:
   compositeTypeRef:
-    apiVersion: compose.crossplane.io/v1alpha2
+    apiVersion: compose.crossplane.io/v1
     kind: Composition
   resources:
     - name: provider-azure
@@ -15,7 +15,7 @@ spec:
       kind: ProviderConfig
 
 ---
-apiVersion: compose.crossplane.io/v1alpha2
+apiVersion: compose.crossplane.io/v1
 kind: CompositionClaim
 metadata:
   name: azure-composition-claim

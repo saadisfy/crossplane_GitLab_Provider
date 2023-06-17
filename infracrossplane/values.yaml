@@ -11,7 +11,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 crossplane:
-  enabled: false
+  enabled: true
   metrikucs:
     # -- Expose Crossplane and RBAC Manager metrics endpoint.
     enabled: false
@@ -34,7 +34,7 @@ azureProviderAAD:
 
 #TODO: how to ensure that secret is created
 azureProviderConfig:
-  enabled: false
+  enabled: true
   secret:
     enable: false
     data: $AZURE_PROVIDER_CONFIG_SECRET # created with: 'az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<Subscription ID>'

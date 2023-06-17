@@ -10,7 +10,7 @@ spec:
     plural: xproviderandconfigs
   claimNames:
     kind: ProviderAndConfig
-    plural: xproviderandconfigs
+    plural: providerandconfigs
   versions:
   - name: v1alpha1
     served: true

@@ -1,18 +1,47 @@
 {{- if .Values.composition.enabled }}
 apiVersion: apiextensions.crossplane.io/v1
-kind: Composition
+kind: CompositeResourceDefinition
 metadata:
-  name: azure-composition
+  name: azure-composdef
 spec:
-  compositeTypeRef:
-    apiVersion: compose.crossplane.io/v1
-    kind: Composition
-  resources:
-    - name: provider-azure
-      version: v0.32.0
-      kind: Provider
-    - name: azure-provider-config
-      kind: ProviderConfig
+  group: azureproviderwithconfig
+  names:
+    kind: ProviderAndConfig
+    plural: providerandconfigs
+  versions:
+  - name: v1alpha1
+    served: true
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              parameters:
+                type: object
+                properties:
+                  storageGB:
+                    type: integer
+                required:
+                - storageGB
+            required:
+            - parameters
+# apiVersion: apiextensions.crossplane.io/v1
+# kind: Composition
+# metadata:
+#   name: azure-composition
+# spec:
+#   compositeTypeRef:
+#     apiVersion: compose.crossplane.io/v1
+#     kind: Composition
+#   resources:
+#     - name: provider-azure
+#       version: v0.32.0
+#       kind: Provider
+#     - name: azure-provider-config
+#       kind: ProviderConfig
 
 # ---
 # apiVersion: compose.crossplane.io/v1

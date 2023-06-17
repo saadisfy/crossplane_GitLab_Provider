@@ -32,7 +32,7 @@
 #             required:
 #             - parameters
 # ---
-apiVersion: configuration.pkg.crossplane.io/v1
+apiVersion: configurations.pkg.crossplane.io/v1
 kind: Configuration
 metadata:
   name: azure-configuration

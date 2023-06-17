@@ -33,32 +33,32 @@ spec:
             required:
             - parameters
 ---
-# # following is a claim for the XRD ProviderAndConfig, hopefully it will create the XR
-# apiVersion: azureproviderwithconfig.example.org/v1
-# kind: ProviderAndConfig
-# metadata:
-#   # Claims are namespaced, unlike XRs.
-#   namespace: crossplane-system
-#   name: my-composite
-#   annotations:
-#     # The external name annotation has special meaning in Crossplane. When a
-#     # claim creates an XR its external name will automatically be propagated to
-#     # the XR. Whether and how the external name is propagated to the resources
-#     # the XR composes is up to its Composition.
-#     crossplane.io/external-name: my-composite-externamename
-# spec:
-#   # resources:
-#   #   - name: provider-azure
-#   #     version: v0.32.0
-#   #     kind: Provider
-#   #   - name: azure-provider-config
-#   #     kind: ProviderConfig
-#   parameters:
-#     storageGB: 20
-#   compositionRef:
-#     name: production
-#   writeConnectionSecretToRef:
-#     name: my-db-connection-details
+# following is a claim for the XRD ProviderAndConfig, hopefully it will create the XR
+apiVersion: azureproviderwithconfig.example.org/v1
+kind: ProviderAndConfig
+metadata:
+  # Claims are namespaced, unlike XRs.
+  namespace: crossplane-system
+  name: my-composite
+  annotations:
+    # The external name annotation has special meaning in Crossplane. When a
+    # claim creates an XR its external name will automatically be propagated to
+    # the XR. Whether and how the external name is propagated to the resources
+    # the XR composes is up to its Composition.
+    crossplane.io/external-name: my-composite-externamename
+spec:
+  # resources:
+  #   - name: provider-azure
+  #     version: v0.32.0
+  #     kind: Provider
+  #   - name: azure-provider-config
+  #     kind: ProviderConfig
+  parameters:
+    storageGB: 20
+  compositionRef:
+    name: production
+  writeConnectionSecretToRef:
+    name: my-db-connection-details
 # ---
 # # composite, acts as a class of the XR, used to give info about the resource the XR should have
 # apiVersion: apiextensions.crossplane.io/v1

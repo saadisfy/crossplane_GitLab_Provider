@@ -10,9 +10,9 @@ metadata:
     - apiGroup: apiextensions.k8s.io
       kind: CustomResourceDefinition
       name: configurations.pkg.crossplane.io
-    - apiGroup: azure.crossplane.io
+    - apiGroup: apiextensions.k8s.io
       kind: CustomResourceDefinition
-      name:
+      name: azure.crossplane.io
 kind: ProviderConfig
 spec:
   credentials:

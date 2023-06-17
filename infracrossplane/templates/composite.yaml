@@ -41,9 +41,6 @@ metadata:
     # the XR. Whether and how the external name is propagated to the resources
     # the XR composes is up to its Composition.
     crossplane.io/external-name: my-composite-externamename
-spec:
-   writeConnectionSecretToRef:
-    name: my-composite-secret
 ---
 
 # apiVersion: apiextensions.crossplane.io/v1

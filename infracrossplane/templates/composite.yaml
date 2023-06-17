@@ -51,6 +51,12 @@ spec:
       kind: Provider
     - name: azure-provider-config
       kind: ProviderConfig
+  parameters:
+    storageGB: 20
+  compositionRef:
+    name: production
+  writeConnectionSecretToRef:
+    name: my-db-connection-details
 ---
 
 # apiVersion: apiextensions.crossplane.io/v1

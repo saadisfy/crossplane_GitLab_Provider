@@ -34,7 +34,7 @@ azureProviderAAD:
 
 #TODO: how to ensure that secret is created
 azureProviderConfig:
-  enabled: true
+  enabled: false
   secret:
     enable: false
     data: $AZURE_PROVIDER_CONFIG_SECRET # created with: 'az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<Subscription ID>'

@@ -6,7 +6,7 @@ metadata:
   dependsOn:
     - apiGroup: azure.crossplane.io
       kind: CustomResourceDefinition
-      name: ProviderConfig
+      name: Provider
 kind: ProviderConfig
 spec:
   credentials:

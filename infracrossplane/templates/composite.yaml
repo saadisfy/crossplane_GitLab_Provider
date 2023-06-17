@@ -2,15 +2,15 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: xproviderandconfigs.azureproviderwithconfig.example.org
+  name: providerandconfigs.azureproviderwithconfig.example.org
 spec:
-  group: azureproviderwithconfig.example.org
+  group: azureproviderwithconfig.example.org # apiversion for kind: composition and the claim ProviderAndConfig
   names:
-    kind: XProviderAndConfig
-    plural: xproviderandconfigs
-  claimNames:
     kind: ProviderAndConfig
     plural: providerandconfigs
+  # claimNames:
+  #   kind: ProviderAndConfig
+  #   plural: providerandconfigs
   versions:
   - name: v1alpha1
     served: true

@@ -12,7 +12,7 @@ fullnameOverride: ""
 
 
 composition:
-  enabled: true
+  enabled: false
 
 crossplane:
   enabled: true
@@ -21,7 +21,7 @@ crossplane:
     enabled: false
 
 azureProvider:
-  enabled: false
+  enabled: true
   package:
     path: xpkg.upbound.io/upbound/provider-azure #:v0.3.0
     version: v0.32.0

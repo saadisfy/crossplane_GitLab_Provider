@@ -21,14 +21,14 @@ crossplane:
     enabled: false
 
 azureProvider:
-  enabled: false
+  enabled: true
   package:
     path: xpkg.upbound.io/upbound/provider-azure #:v0.3.0
     version: v0.32.0
 
 
 azureProviderAAD:
-  enabled: false
+  enabled: true
   package:
     path:  xpkg.upbound.io/upbound/provider-azuread
     version: v0.8.0

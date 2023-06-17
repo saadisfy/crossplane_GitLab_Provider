@@ -1,22 +1,61 @@
 {{- if .Values.composition.enabled }}
-apiVersion: apiextensions.crossplane.io
-kind: Composition
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositionDefinition
 metadata:
-  name: azure-provider-with-config
+  name: azure-composition
 spec:
+  compositeTypeRef:
+    apiVersion: compose.crossplane.io/v1alpha2
+    kind: Composition
+  resources:
+    - name: provider-azure
+      version: v0.32.0
+      kind: Provider
+    - name: azure-provider-config
+      kind: ProviderConfig
+
+---
+apiVersion: compose.crossplane.io/v1alpha2
+kind: CompositionClaim
+metadata:
+  name: azure-composition-claim
+spec:
+  compositionRef:
+    name: azure-composition
   resources:
     - name: provider-azure
       kind: Provider
-      version: v0.32.0
-      spec:
+      properties:
         package: "xpkg.upbound.io/upbound/provider-azure:v0.32.0"
     - name: azure-provider-config
       kind: ProviderConfig
-      spec:
+      properties:
         credentials:
           source: Secret
           secretRef:
             name: azure-secret
             namespace: crossplane-system
             key: creds
+
+#---
+# apiVersion: apiextensions.crossplane.io
+# kind: Composition
+# metadata:
+#   name: azure-provider-with-config
+# spec:
+#   resources:
+#     - name: provider-azure
+#       kind: Provider
+#       version: v0.32.0
+#       spec:
+#         package: "xpkg.upbound.io/upbound/provider-azure:v0.32.0"
+#     - name: azure-provider-config
+#       kind: ProviderConfig
+#       spec:
+#         credentials:
+#           source: Secret
+#           secretRef:
+#             name: azure-secret
+#             namespace: crossplane-system
+#             key: creds
 {{- end }}

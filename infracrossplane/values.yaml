@@ -12,7 +12,7 @@ fullnameOverride: ""
 
 
 composition:
-  enabled: false
+  enabled: true
 
 crossplane:
   enabled: true

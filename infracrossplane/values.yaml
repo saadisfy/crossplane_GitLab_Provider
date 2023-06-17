@@ -10,6 +10,10 @@
 nameOverride: ""
 fullnameOverride: ""
 
+
+composition:
+  enabled: false
+
 crossplane:
   enabled: true
   metrikucs:

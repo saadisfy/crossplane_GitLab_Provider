@@ -1,3 +1,4 @@
+{{- if .Values.composition.enabled }}
 apiVersion: apiextensions.crossplane.io
 kind: Composition
 metadata:
@@ -18,3 +19,4 @@ spec:
             name: azure-secret
             namespace: crossplane-system
             key: creds
+{{- end }}

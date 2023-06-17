@@ -4,9 +4,9 @@ apiVersion: azure.upbound.io/v1beta1
 metadata:
   name: default
   dependsOn:
-    - apiGroup: azure.upbound.io/v1beta1
-      kind: CustomResourceDefinition
-      name: ProviderConfig
+    - apiGroup: pkg.crossplane.io/v1
+      kind: Provider
+      name: upbound-provider-azure
 kind: ProviderConfig
 spec:
   credentials:
@@ -15,7 +15,4 @@ spec:
       name: {{ $azureProvicerConfigSecret.name}}
       namespace: {{ $azureProvicerConfigSecret.namespace}}
       key: {{ $azureProvicerConfigSecret.key}}
-  dependsOn:
-    - provider: {{ .Values.azureProvider.package.path}}
-      version:  {{ .Values.azureProvider.package.version}}
 {{- end -}}

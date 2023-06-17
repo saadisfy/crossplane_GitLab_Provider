@@ -1,0 +1,6 @@
+#kubectl patch -n argocd configmaps argocd-cm --patch-file patch.yaml
+
+apiVersion: v1
+data:
+  application.resourceTrackingMethod: annotation
+kind: ConfigMap

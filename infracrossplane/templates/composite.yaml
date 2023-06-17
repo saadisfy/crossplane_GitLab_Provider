@@ -45,12 +45,12 @@ metadata:
     # the XR composes is up to its Composition.
     crossplane.io/external-name: my-composite-externamename
 spec:
-  resources:
-    - name: provider-azure
-      version: v0.32.0
-      kind: Provider
-    - name: azure-provider-config
-      kind: ProviderConfig
+  # resources:
+  #   - name: provider-azure
+  #     version: v0.32.0
+  #     kind: Provider
+  #   - name: azure-provider-config
+  #     kind: ProviderConfig
   parameters:
     storageGB: 20
   compositionRef:

@@ -12,7 +12,7 @@ spec:
   #   kind: ProviderAndConfig
   #   plural: providerandconfigs
   versions:
-  - name: v1alpha1
+  - name: v1
     served: true
     referenceable: true
     schema:
@@ -32,7 +32,8 @@ spec:
             required:
             - parameters
 ---
-apiVersion: azureproviderwithconfig.example.org/v1alpha1
+# following is a claim for the XRD ProviderAndConfig
+apiVersion: azureproviderwithconfig.example.org/v1
 kind: ProviderAndConfig
 metadata:
   # Claims are namespaced, unlike XRs.
@@ -74,30 +75,7 @@ spec:
     - name: azure-provider-config
       kind: ProviderConfig
 
----
-# apiVersion: compose.crossplane.io/v1
-# kind: CompositionClaim
-# metadata:
-#   name: azure-composition-claim
-# spec:
-#   compositionRef:
-#     name: azure-composition
-#   resources:
-#     - name: provider-azure
-#       kind: Provider
-#       properties:
-#         package: "xpkg.upbound.io/upbound/provider-azure:v0.32.0"
-#     - name: azure-provider-config
-#       kind: ProviderConfig
-#       properties:
-#         credentials:
-#           source: Secret
-#           secretRef:
-#             name: azure-secret
-#             namespace: crossplane-system
-#             key: creds
-
-#---
+# ---
 # apiVersion: apiextensions.crossplane.io
 # kind: Composition
 # metadata:

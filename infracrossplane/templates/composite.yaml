@@ -29,7 +29,7 @@ spec:
             required:
             - parameters
 ---
-apiVersion: database.example.org/v1alpha1
+apiVersion: azureproviderwithconfig.example.org/v1alpha1
 kind: ProviderAndConfig
 metadata:
   # Claims are namespaced, unlike XRs.

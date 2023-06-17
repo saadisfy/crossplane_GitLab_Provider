@@ -60,21 +60,21 @@ spec:
   writeConnectionSecretToRef:
     name: my-db-connection-details
 # ---
-# # composite, acts as a class of the XR, used to give info about the resource the XR should have
-# apiVersion: apiextensions.crossplane.io/v1
-# kind: Composition
-# metadata:
-#   name: azure-composition
-# spec:
-#   compositeTypeRef:
-#     apiVersion: azureproviderwithconfig.example.org
-#     kind: XProviderAndConfig
-#   resources:
-#     - name: provider-azure
-#       version: v0.32.0
-#       kind: Provider
-#     - name: azure-provider-config
-#       kind: ProviderConfig
+# composite, acts as a class of the XR, used to give info about the resource the XR should have
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: azure-composition
+spec:
+  compositeTypeRef:
+    apiVersion: azureproviderwithconfig.example.org
+    kind: XProviderAndConfig
+  resources:
+    - name: provider-azure
+      version: v0.32.0
+      kind: Provider
+    - name: azure-provider-config
+      kind: ProviderConfig
 
 # ---
 # apiVersion: apiextensions.crossplane.io
